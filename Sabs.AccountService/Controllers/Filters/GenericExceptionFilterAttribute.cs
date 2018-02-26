@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Sabs.AccountService.Exceptions;
@@ -28,7 +27,8 @@ namespace Sabs.AccountService.Controllers.Filters
         public void OnUnknownException(ExceptionContext context)
         {
             Exception exception = context.Exception;
-            ExceptionResult result = new ExceptionResult(exception, false);
+            ObjectResult result = new ObjectResult(new {exception = exception.Message});
+            result.StatusCode = 500;
             context.Result = result;
         }
 

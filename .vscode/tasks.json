@@ -10,6 +10,19 @@
                 "${workspaceFolder}/Sabs.AccountService/Sabs.AccountService.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "identifier": "publish",
+            "label": "publish as netcoreapp",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "publish",
+                "${workspaceFolder}/Sabs.AccountService/Sabs.AccountService.csproj",
+                "-c",
+                "Release"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }
