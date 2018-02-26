@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sabs.AccountService.Models.Accounting
+namespace Sabs.AccountService.Data.Accounting.Models
 {
-    public class AccountType
+    public class Institution
     {
         public int Id {get; set;}
         public string Name {get; set;}
-        public string Description {get; set;}
     }
 }

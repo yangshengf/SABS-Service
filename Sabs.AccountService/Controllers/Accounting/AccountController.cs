@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Sabs.AccountService.Models.Accounting;
+using Sabs.AccountService.Data.Accounting.Models;
+using Sabs.AccountService.Data.Accounting.Repositories;
 
 namespace Sabs.AccountService.Controllers.Accounting
 {
@@ -26,6 +27,11 @@ namespace Sabs.AccountService.Controllers.Accounting
         public Account Get(int id)
         {
             return _context.FindAccountById(id);
-        } 
+        }
+
+        [HttpPost]
+        public void Post() {
+
+        }
     }
 }
