@@ -2,36 +2,47 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Sabs.AccountService.Controllers.Filters;
+using Sabs.AccountService.Data.Accounting.Context;
 using Sabs.AccountService.Data.Accounting.Models;
 using Sabs.AccountService.Data.Accounting.Repositories;
 
 namespace Sabs.AccountService.Controllers.Accounting
 {
     [Route("api/[controller]")]
+    [GenericExceptionFilter]
     public class AccountController : Controller
     {
-        AccountContext _context;
+        AccountRepository _accountRepository;
 
-        public AccountController(AccountContext accountContext)
+        public AccountController(AccountRepository accountRepository)
         {
-            _context = accountContext;
+            _accountRepository = accountRepository;
         }
 
         [HttpGet]
         public IEnumerable<Account> Get()
         {
-            return _context.Accounts.ToList();
+            return _accountRepository.GetAccountList();
         }
 
         [HttpGet("{id}")]
         public Account Get(int id)
         {
-            return _context.FindAccountById(id);
+            return _accountRepository.FindAccountById(id);
         }
 
         [HttpPost]
-        public void Post() {
+        public void Post([FromBody] Account account) 
+        {
+            _accountRepository.InsertAccount(account);
+        }
 
+        [HttpPost("{id}")]
+        public void Post(int id, [FromBody] Account account)
+        {
+            account.Id = id;
+            _accountRepository.UpdateAccountMetadata(account);
         }
     }
 }

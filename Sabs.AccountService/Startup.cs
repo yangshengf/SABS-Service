@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Sabs.AccountService.Data.Accounting.Repositories;
+using Sabs.AccountService.Data.Accounting.Context;
 
 namespace Sabs.AccountService
 {
